@@ -52,6 +52,6 @@ class Relation extends TableColumn
         if (is_a($relation, 'Illuminate\Database\Eloquent\Model')) {
             $relation = collect([$relation]);
         }
-        return $relation->pluck($this->field)->join(', ');
+        return is_null($relation) ? '' : $relation->pluck($this->field)->join(', ');
     }
 }
